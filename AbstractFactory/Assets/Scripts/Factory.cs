@@ -9,6 +9,7 @@ public struct VehicleRequirements
     public int passengers;
     public bool hasEngine;
     public bool hasCargo;
+    public bool offRoad;
 }
 
 
@@ -16,6 +17,7 @@ public abstract class AbstractVehicleFactory : MonoBehaviour
 {
     public abstract IVehicleFactory CycleFactory();
     public abstract IVehicleFactory MotorVehicleFactory();
+    public abstract IVehicleFactory OffroadVehicleFactory();
 }
 
 public class CycleFactory : IVehicleFactory
@@ -61,6 +63,35 @@ public class MotorVehicleFactory : IVehicleFactory
     }
 }
 
+public class OffroadVehicleFactory : IVehicleFactory
+{
+    public IVehicle Create(VehicleRequirements requirements)
+    {
+        switch(requirements.numberOfWheels)
+        {
+            case 2:
+                if (requirements.hasEngine)
+                    return new DirtBike();
+                else
+                    return new MountainBike();
+            case 4:
+                if (requirements.hasCargo)
+                    return new TrophyTruck();
+                else
+                {
+                    if (requirements.passengers <= 2)
+                        return new ATV();
+                    else
+                        return new SxS();
+                }
+                
+            default:
+                return new WalkingStick();
+        }
+        return null;
+    }
+}
+
 public class VehicleFactory : AbstractVehicleFactory
 {
     public override IVehicleFactory CycleFactory()
@@ -71,5 +102,10 @@ public class VehicleFactory : AbstractVehicleFactory
     public override IVehicleFactory MotorVehicleFactory()
     {
         return new MotorVehicleFactory();
+    }
+
+    public override IVehicleFactory OffroadVehicleFactory()
+    {
+        return new OffroadVehicleFactory();
     }
 }

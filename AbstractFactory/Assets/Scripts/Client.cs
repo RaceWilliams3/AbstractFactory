@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Client : MonoBehaviour
 {
@@ -10,8 +11,11 @@ public class Client : MonoBehaviour
     public Button create;
     public Toggle hasEngine;
     public Toggle carriesCargo;
+    public Toggle Offroad;
     public Slider passengers;
     public Slider wheels;
+
+    public TMP_Text text;
 
     private VehicleRequirements requirements;
     private IVehicle x;
@@ -22,13 +26,14 @@ public class Client : MonoBehaviour
         requirements.hasCargo = carriesCargo.isOn;
         requirements.passengers = (int)passengers.value;
         requirements.numberOfWheels = (int)wheels.value;
+        requirements.offRoad = Offroad.isOn;
             
     }
 
     public void OnCreateButton()
     {
         x = GetVehicle(requirements);
-        x.Start();
+        text.text = x.Start();
     }
 
     public IVehicle GetVehicle(VehicleRequirements requirements)
@@ -36,13 +41,20 @@ public class Client : MonoBehaviour
         var factory = new VehicleFactory();
         IVehicle vehicle;
 
-        if (requirements.hasEngine)
+        if (requirements.offRoad)
         {
-            vehicle = factory.MotorVehicleFactory().Create(requirements);
+            vehicle = factory.OffroadVehicleFactory().Create(requirements);
         }
         else
         {
-            vehicle = factory.CycleFactory().Create(requirements);
+            if (requirements.hasEngine)
+            {
+                vehicle = factory.MotorVehicleFactory().Create(requirements);
+            }
+            else
+            {
+                vehicle = factory.CycleFactory().Create(requirements);
+            }
         }
         return vehicle;
 

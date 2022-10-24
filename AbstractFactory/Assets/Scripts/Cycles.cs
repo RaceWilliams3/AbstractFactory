@@ -4,48 +4,66 @@ using UnityEngine;
 
 public class Unicycle : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a unicycle");
+        return ("I'm a unicycle");
     }
 }
 
 public class Bicycle : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a Bicycle");
+        return ("I'm a Bicycle");
     }
 }
 
 public class Tandem : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a tandem bike");
+        return ("I'm a tandem bike");
     }
 }
 
 public class Tricycle : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a tricycle");
+        return ("I'm a tricycle");
     }
 }
 
 public class GoKart : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a go kart");
+        return ("I'm a go kart");
     }
 }
 
 public class FamilyBike : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a family bike");
+        return ("I'm a family bike");
+    }
+}
+
+
+public class MountainBike : MonoBehaviour, IVehicle
+{
+    public string Start()
+    {
+        return ("I'm a mountain Bike");
+    }
+}
+
+
+public class WalkingStick : MonoBehaviour, IVehicle
+{
+    public string Start()
+    {
+        return ("I'm a walking stick");
     }
 }

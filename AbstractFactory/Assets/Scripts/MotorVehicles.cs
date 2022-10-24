@@ -5,24 +5,63 @@ using UnityEngine;
 
 public class Car : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a car");
+        return ("I'm a car");
     }
 }
 
 public class MotorBike : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a motorbike");
+        return ("I'm a motorbike");
     }
 }
 
 public class Truck : MonoBehaviour, IVehicle
 {
-    public void Start()
+    public string Start()
     {
-        Debug.Log("I'm a truck");
+        return ("I'm a truck");
     }
 }
+
+
+public class TrophyTruck : MonoBehaviour, IVehicle
+{
+    public string Start()
+    {
+        return ("I'm a trophy truck");
+    }
+}
+
+
+public class DirtBike : MonoBehaviour, IVehicle
+{
+    public string Start()
+    {
+        return ("I'm a dirtbike");
+    }
+}
+
+
+public class ATV : MonoBehaviour, IVehicle
+{
+    public string Start()
+    {
+        return ("I'm an ATV");
+    }
+}
+
+
+public class SxS : MonoBehaviour, IVehicle
+{
+    public string Start()
+    {
+        return ("I'm a Side by side");
+    }
+}
+
+
+

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IVehicle 
 {
-    void Start();
+    string Start();
 }
 
 public interface IVehicleFactory
